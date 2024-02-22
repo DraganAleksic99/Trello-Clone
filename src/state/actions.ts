@@ -1,4 +1,4 @@
-import { DragItem } from "../DragItem"
+import { TDragItem } from "../DragItem"
 
 export type Action =
 | {
@@ -18,7 +18,7 @@ export type Action =
 }
 | {
     type: "SET_DRAGGED_ITEM"
-    payload: DragItem | null
+    payload: TDragItem | null
 }
 | {
     type: "MOVE_TASK"
@@ -60,7 +60,7 @@ export const moveList = (
 });
 
 export const setDraggedItem = (
-    draggedItem: DragItem | null,
+    draggedItem: TDragItem | null,
 ): Action => ({
     type: "SET_DRAGGED_ITEM",
     payload: draggedItem

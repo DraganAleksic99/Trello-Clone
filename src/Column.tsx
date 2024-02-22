@@ -7,23 +7,23 @@ import { useRef } from "react";
 import { useItemDrag } from "./utils/useItemDrag";
 import { useDrop } from "react-dnd";
 import { isHidden } from "./utils/isHidden";
-import { DragItem } from "./DragItem";
+import { TDragItem } from "./DragItem";
 
-type ColumnProps = {
+type TColumnProps = {
     text: string
     id: string
     isPreview?: boolean
 }
     
 
-export const Column = ({text, id, isPreview}: ColumnProps) => {
+export const Column = ({text, id, isPreview}: TColumnProps) => {
     const { getTasksByListId, dispatch, draggedItem } = useAppState();
     const tasks = getTasksByListId(id);
     const ref = useRef<HTMLDivElement>(null);
 
     const [, drop] = useDrop({
         accept: ["COLUMN", "CARD"],
-        hover(item: DragItem) {
+        hover(item: TDragItem) {
             if (!draggedItem) {
                 return;
             }

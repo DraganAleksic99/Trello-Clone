@@ -2,11 +2,11 @@ import { useState } from "react";
 import { NewItemFormContainer, NewItemButton, NewItemInput } from "./styles";
 import { useFocus } from "./utils/useFocus";    
 
-type NewItemFormProps = {
+type TNewItemFormProps = {
     onAdd(text: string): void
 }
 
-export const NewItemForm = ({onAdd}: NewItemFormProps) => {
+export const NewItemForm = ({onAdd}: TNewItemFormProps) => {
     const [text, setText] = useState('');
     const inputRef = useFocus();
 
@@ -20,7 +20,7 @@ export const NewItemForm = ({onAdd}: NewItemFormProps) => {
 
     return (
         <NewItemFormContainer>
-            <NewItemInput value={text} onChange={(e) => setText(e.target.value)} ref={inputRef}
+            <NewItemInput value={text} onChange={(e) => setText(e.target.value)} ref={inputRef} placeholder="New task"
                 onKeyDown={handleAddText}/>
             <NewItemButton onClick={() => onAdd(text)}>
                 Create

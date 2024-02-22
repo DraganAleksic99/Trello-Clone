@@ -1,7 +1,7 @@
 import { Action } from "./actions";
 import { nanoid } from "nanoid";
 import { findItemIndexById, moveItem } from "../utils/arrayUtils";
-import { DragItem } from "../DragItem";
+import { TDragItem } from "../DragItem";
 
 export type Task = {
     id: string
@@ -14,12 +14,12 @@ export type List = {
     tasks: Task[]
 }
 
-export type AppState = {
+export type TAppState = {
     lists: List[]
-    draggedItem: DragItem | null
+    draggedItem: TDragItem | null
 }
 
-export const appStateReducer = (draft: AppState, action: Action): AppState | void => {
+export const appStateReducer = (draft: TAppState, action: Action): TAppState | void => {
     switch (action.type) {
     case "ADD_LIST": {
         draft.lists.push({

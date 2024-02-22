@@ -1,11 +1,11 @@
 import { createContext, useContext, Dispatch } from "react";
-import { Task, List, AppState, appStateReducer } from "./appStateReducer";
+import { Task, List, TAppState, appStateReducer } from "./appStateReducer";
 import { Action } from "./actions";
 import { useImmerReducer } from "use-immer";
-import { DragItem } from "../DragItem";
+import { TDragItem } from "../DragItem";
 
 
-const appData: AppState = {
+const appData: TAppState = {
     draggedItem: null,
     lists: [
         {
@@ -30,7 +30,7 @@ type AppStateContextProps = {
     lists: List[]
     getTasksByListId(id: string): Task[]
     dispatch: Dispatch<Action>
-    draggedItem: DragItem | null
+    draggedItem: TDragItem | null
 }
 
 const AppStateContext = createContext<AppStateContextProps>({} as AppStateContextProps);

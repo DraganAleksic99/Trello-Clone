@@ -6,14 +6,14 @@ import { useAppState } from "./state/AppStateContext";
 import { isHidden } from "./utils/isHidden";
 import { moveTask, setDraggedItem } from "./state/actions";
 
-type CardProps = {
+type TCardProps = {
     text: string
     id: string
     columnId: string
     isPreview?: boolean
 }
 
-export const Card = ({ text, id, isPreview, columnId }: CardProps) => {
+export const Card = ({ text, id, isPreview, columnId }: TCardProps) => {
     const {draggedItem, dispatch} = useAppState();
     const ref = useRef<HTMLDivElement>(null);
 

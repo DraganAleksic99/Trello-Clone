@@ -1,20 +1,32 @@
 import styled from 'styled-components';
 
-export const AppContainer = styled.div`
-    align-items: flex-start;
-    background-color: #3179ba;
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    padding: 20px;
-    width: 100%;
-`
-interface DragPreviewContainerProps {
+interface IDragPreviewContainerProps {
     isHidden?: boolean
     isPreview?: boolean
 }
 
-export const DragPreviewContainer = styled.div<DragPreviewContainerProps>`
+type TAddItemButtonProps = {
+    dark?: boolean
+}
+
+type TDragPreviewWrapperProps = {
+    position: {
+        x: number
+        y: number
+    }
+}
+
+export const AppContainer = styled.div`
+    background-color: #3179ba;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    height: 100vh;
+    padding: 20px;
+    width: 100%;
+`
+
+export const DragPreviewContainer = styled.div<IDragPreviewContainerProps>`
     transform: ${props => (props.isPreview ? "rotate(0deg)" : undefined)};
     opacity: ${props => (props.isHidden ? 0 : 1)};
 `
@@ -27,6 +39,7 @@ export const ColumnContainer = styled(DragPreviewContainer)`
     border-radius: 3px;
     padding: 8px 8px;
     flex-grow: 0;
+    cursor: pointer;
 `
 
 export const ColumnTitle = styled.div`
@@ -42,13 +55,12 @@ export const CardContainer = styled(DragPreviewContainer)`
     max-width: 300px;
     border-radius: 3px;
     box-shadow: #091e4240 0px 1px 0px 0px;
+    &:hover {
+        transform: scale(1.02);
+      }
 `
 
-type AddItemButtonProps = {
-    dark?: boolean
-}
-
-export const AddItemButton = styled.button<AddItemButtonProps>`
+export const AddItemButton = styled.button<TAddItemButtonProps>`
     background-color: #ffffff3d;
     border-radius: 3px;
     border: none;
@@ -65,21 +77,25 @@ export const AddItemButton = styled.button<AddItemButtonProps>`
 `
 
 export const NewItemFormContainer = styled.div`
-    max-width: 300px;
     display: flex;
+    align-items: flex-start;
     flex-direction: column;
     width: 100%;
-    align-items: flex-start;
+    max-width: 300px;
 `
 
 export const NewItemButton = styled.button`
     background-color: #5aac44;
-    border-radius: 3px;
+    border-radius: 8px;
     border: none;
     box-shadow: none;
     color: #fff;
-    padding: 6px 12px;
+    padding: 4px 12px;
     text-align: center;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.03);
+      }
 `
 
 export const NewItemInput = styled.input`
@@ -101,16 +117,9 @@ export const CustomDragLayerContainer = styled.div`
     z-index: 100;
 `
 
-type DragPreviewWrapperProps = {
-    position: {
-        x: number
-        y: number
-    }
-}
-
-export const DragPreviewWrapper = styled.div.attrs<DragPreviewWrapperProps>(({ position: { x, y } }) => ({
+export const DragPreviewWrapper = styled.div.attrs<TDragPreviewWrapperProps>(({ position: { x, y } }) => ({
     style: {
         transform: `translate(${x}px, ${y}px)`
     }
     })
-)<DragPreviewWrapperProps>``
+)<TDragPreviewWrapperProps>``
