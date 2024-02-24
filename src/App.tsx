@@ -1,4 +1,3 @@
-import React from 'react';
 import { Column } from "./Column";
 import { AppContainer } from './styles';
 import { AddNewItem } from './AddNewItem';
@@ -8,6 +7,7 @@ import { CustomDragLayer } from './CustomDragLayer';
 
 export const App = () => {
   const {lists, dispatch} = useAppState();
+
   return <AppContainer>
       <CustomDragLayer />
       { lists.map(list => (
