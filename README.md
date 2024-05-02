@@ -5,7 +5,7 @@ In Trello-Clone, you can create tasks and organize them into lists. You can drag
 # Installation
 
 ## Clone this repository
-git https://github.com/DraganAleksic99/Trello-Clone.git  
+git clone https://github.com/DraganAleksic99/Trello-Clone.git  
 cd Trello-Clone
 
 ## Install dependencies
